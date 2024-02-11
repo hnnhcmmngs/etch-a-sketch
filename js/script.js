@@ -2,7 +2,12 @@ const body = document.querySelector("body");
 const gridOfSquares = document.querySelector("#gridofsquares");
 const gridSize = document.querySelector("#gridsize");
 
+const pencil = document.querySelector("#pencil");
+const rainbow = document.querySelector("#rainbow");
+const eraser = document.querySelector("#eraser");
+
 let side = 16;
+let stylus = "rainbow";
 
 gridSize.addEventListener("click", () => {
     let size = prompt("Enter a grid dimension:", side);
@@ -10,6 +15,27 @@ gridSize.addEventListener("click", () => {
         side = +size;
         createGrid(+size);
     }
+})
+
+pencil.addEventListener("click", () => {
+    stylus = "pencil";
+    pencil.className = "selected";
+    rainbow.className = "notselected";
+    eraser.className = "notselected";
+})
+
+rainbow.addEventListener("click", () => {
+    stylus = "rainbow";
+    pencil.className = "notselected";
+    rainbow.className = "selected";
+    eraser.className = "notselected";
+})
+
+eraser.addEventListener("click", () => {
+    stylus = "eraser";
+    pencil.className = "notselected";
+    rainbow.className = "notselected";
+    eraser.className = "selected";
 })
 
 function createGrid(gridSide) {
