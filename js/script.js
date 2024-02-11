@@ -55,12 +55,24 @@ function createGrid(gridSide) {
             let innerDiv = document.createElement("div");
             innerDiv.style.flex = "auto";
             innerDiv.style.margin = "0px";
+            innerDiv.style.backgroundColor = "rgb(255, 255, 255)";
             innerDiv.addEventListener("mouseenter", () => {
-                innerDiv.style.backgroundColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
+                innerDiv.style.backgroundColor = changeColor(innerDiv.style.backgroundColor);
             })
             outerDiv.appendChild(innerDiv);
         }
         gridOfSquares.appendChild(outerDiv);
+    }
+}
+
+function changeColor(currentColor) {
+    if (stylus === "eraser") {
+        return "rgb(255, 255, 255)";
+    } else if (stylus === "rainbow") {
+        return `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
+    } else {
+        let rgb = currentColor.substring(4, currentColor.length-1).split(", ");
+        return `rgb(${Math.max(0, +rgb[0] - 25)}, ${Math.max(0, +rgb[1] - 25)}, ${Math.max(0, +rgb[2] - 25)})`;
     }
 }
 
