@@ -7,7 +7,7 @@ const rainbow = document.querySelector("#rainbow");
 const eraser = document.querySelector("#eraser");
 
 let side = 16;
-let stylus = "rainbow";
+let stylus = "pencil";
 
 gridSize.addEventListener("click", () => {
     let size = prompt("Enter a grid dimension:", side);
